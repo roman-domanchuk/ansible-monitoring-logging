@@ -1,0 +1,22 @@
+---
+- name: Install Node Exporter
+  package:
+    name: node_exporter
+    state: present
+
+- name: Configure Prometheus to scrape Node Exporter
+  lineinfile:
+    path: /etc/prometheus/prometheus.yml
+    insertafter: 'scrape_configs:'
+    line: |
+      - job_name: 'node_exporter'
+        static_configs:
+          - targets: ['{{ inventory_hostname }}:9100']
+  notify:
+    - Reload Prometheus
+
+- name: Ensure Node Exporter is running
+  systemd:
+    name: node_exporter
+    enabled: yes
+    state: started

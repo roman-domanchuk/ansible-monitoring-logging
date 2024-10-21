@@ -1,0 +1,22 @@
+---
+- name: Install ElasticSearch
+  package:
+    name: elasticsearch
+    state: present
+
+- name: Install Kibana
+  package:
+    name: kibana
+    state: present
+
+- name: Ensure ElasticSearch is running
+  systemd:
+    name: elasticsearch
+    enabled: yes
+    state: started
+
+- name: Ensure Kibana is running
+  systemd:
+    name: kibana
+    enabled: yes
+    state: started

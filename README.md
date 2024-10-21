@@ -13,7 +13,7 @@
 
 1. Клонируйте репозиторий:
     ```bash
-    git clone <ссылка на ваш репозиторий>
+    git clone https://github.com/roman-domanchuk/ansible-monitoring-logging)
     ```
 
 2. Перейдите в каталог проекта:
